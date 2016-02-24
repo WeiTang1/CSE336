@@ -20,6 +20,7 @@
 	<script type="text/javascript">
 	function removetempfunction () {
 		var whichindex = document.getElementById('SecurityQues').selectedIndex;
+		console.log(whichindex);
 		if (whichindex == 6) {
 			document.getElementById('customquestioncontainer').style.display = 'block';
 			document.getElementById('custom_question').value='';
@@ -31,6 +32,35 @@
 	</script>
 	<title>developerWorks registration</title>
 	<script type="text/javascript">
+
+	function securityAnsCheck(SecurityAns){
+		var choice = document.getElementById(SecurityAns).value;
+		if(choice == ''){
+			document.getElementById('securityAns_valid').style.display = 'none';
+			document.getElementById('securityAns_invalid').style.display = 'inline';
+			document.getElementById('securityAns_invalid').innerHTML= 'Answer can not be blank';
+		}
+		else{
+			document.getElementById('securityAns_invalid').style.display = 'none';
+			document.getElementById('securityAns_valid').style.display = 'inline';
+			document.getElementById('securityAns_valid').innerHTML= 'Validated Input';
+		}
+	}
+
+	function securityQuesCheck(SecurityQues){
+		var choice = document.getElementById(SecurityQues).value;
+		if(choice == ''){
+			document.getElementById('securityQues_valid').style.display = 'none';
+			document.getElementById('securityQues_invalid').style.display = 'inline';
+			document.getElementById('securityQues_invalid').innerHTML= 'Please Choice One';
+		}
+		else{
+			document.getElementById('securityQues_invalid').style.display = 'none';
+			document.getElementById('securityQues_valid').style.display = 'inline';
+			document.getElementById('securityQues_valid').innerHTML= 'Validated Input';
+		}
+	}
+
 	function dropdowncheck(Language){
 		var choice = document.getElementById(Language).value;
 		console.log(choice);
@@ -408,7 +438,7 @@
 											<label for="countryResidence">Country/region of residence:<span class="ibm-required">*</span><br>
 												<span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span></label>
 												<span>
-													<select name="CountryOfRes" id="countryResidence" onblur = "countrycheck('countryResidence')">
+													<select name="CountryOfRes" id="countryResidence" onchange = "countrycheck('countryResidence')">
 														<option selected="selected" value="">Select one</option>
 														<option value="FR">France</option>
 														<option value="DE">Germany</option>
@@ -431,7 +461,7 @@
 													<p>
 														<label for="Language">Language:<span class="ibm-required">*</span></label>
 														<span>
-															<select name="Language" id="Language" onblur="dropdowncheck('Language');">
+															<select name="Language" id="Language" onchange="dropdowncheck('Language');">
 																<option value="">Select one</option>
 																<option selected="selected" value="en-US">English</option>
 																<option value="fr-FR">French</option>
@@ -450,8 +480,10 @@
 												<div class="ibm-col-2-1">
 													<p>
 														<label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
+														<span class="securityQues_correct" id="securityQues_valid" style="display:none;"></span>
+														<span class="securityQues_error" id="securityQues_invalid" style="display:none;"></span>
 														<span>
-															<select name="SecurityQues" id="SecurityQues" onchange="removetempfunction()">
+															<select name="SecurityQues" id="SecurityQues" onchange="securityQuesCheck('SecurityQues');" >
 																<option selected="selected" value="">Select one</option>
 																<option value="name">What is your mother's maiden name?</option>
 																<option value="pet">What is the name of your first pet?</option>
@@ -459,7 +491,9 @@
 																<option value="job">In what city or town was your first job?</option>
 																<option value="country">In what country were you born?</option>
 															</select>
+
 														</span>
+
 													</p>
 												</div>
 												<div class="ibm-col-2-1">
@@ -472,7 +506,9 @@
 										</div>
 										<p>
 											<label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
-											<span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true"></span>
+											<span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true" onblur="securityAnsCheck('SecurityAns');"></span>
+											<span class="securityAns_correct" id="securityAns_valid" style="display:none;"></span>
+											<span class="securityAns_error" id="securityAns_invalid" style="display:none;"></span>
 										</p>
 										<div class="dw-lc-spacevertical"> </div>
 										<h2 class="ibm-alternate-rule">Privacy preferences</h2>

@@ -114,6 +114,22 @@
   color: green;
   padding: 0px 0px 0px 20px;
 }
+.securityQues_correct{
+  color: green;
+}
+.securityQues_error{
+  color:red;
+}
+.securityAns_correct{
+  color: green;
+  padding: 0px 0px 0px 20px;
+
+}
+.securityAns_error{
+  color:red;
+  padding: 0px 0px 0px 20px;
+
+}
 .dw-lc-spacevertical {height:10px;}
 
 .dw-lc-important-adjust {/*font-size: 0.901em;*/font-size: 11px;margin-left:0px !important;}
