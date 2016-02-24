@@ -88,15 +88,39 @@
 	padding:5px 5px 5px 21px;
 	margin-left:0px !important;
 }
+.email_correct{
+  color: green;
+  padding: 0px 0px 0px 20px;
+}
+.email_error{
+  color: red;
+  padding: 0px 0px 0px 20px;
+}
 
+.name_error{
+  color: red;
+  padding: 10px 0px 0px 0px;
+
+}
+.name_correct{
+  color: green;
+  padding: 10px 0px 0px 0px;
+}
+.language_error{
+  color: red;
+  padding: 0px 0px 0px 20px;
+}
+.language_correct{
+  color: green;
+  padding: 0px 0px 0px 20px;
+}
 .dw-lc-spacevertical {height:10px;}
 
 .dw-lc-important-adjust {/*font-size: 0.901em;*/font-size: 11px;margin-left:0px !important;}
 
 /* 17 Nov 2014 SPF: Added start */
 .dw-lc-bluemix-trial {
-	padding-left:85px !important; 
+	padding-left:85px !important;
 	text-indent:-23px
 }
 /* 17 Nov 2014 SPF: Added end */
-
