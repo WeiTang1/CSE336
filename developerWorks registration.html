@@ -33,6 +33,46 @@
 	<title>developerWorks registration</title>
 	<script type="text/javascript">
 
+	function checkPassword(){
+		var pass = document.getElementById('Password').value;
+		if (pass == ''){
+			document.getElementById('password_valid').style.display = 'none';
+			document.getElementById('password_invalid').style.display = 'inline';
+			document.getElementById('password_invalid').innerHTML="Password can not be empty";
+		}
+		else{
+			document.getElementById('password_invalid').style.display = 'none';
+			document.getElementById('password_valid').style.display = 'inline';
+			document.getElementById('password_valid').innerHTML="Correct";
+		}
+	}
+	function checkRePassword(){
+		var repass = document.getElementById('RePassword').value;
+		var pass = document.getElementById('Password').value;
+
+		if (repass == ''){
+			document.getElementById('repassword_mismatch').style.display = 'none';
+			document.getElementById('repassword_valid').style.display = 'none';
+			document.getElementById('repassword_invalid').style.display = 'inline';
+			document.getElementById('repassword_invalid').innerHTML="RePassword can not be empty";
+		}
+		else{
+			if(repass == pass){
+				document.getElementById('repassword_valid').style.display = 'inline';
+				document.getElementById('repassword_invalid').style.display = 'none';
+				document.getElementById('repassword_mismatch').style.display = 'none';
+				document.getElementById('repassword_valid').innerHTML = "Correct";
+
+			}
+			else{
+				document.getElementById('repassword_valid').style.display = 'none';
+				document.getElementById('repassword_invalid').style.display = 'none';
+				document.getElementById('repassword_mismatch').style.display = "inline";
+
+			}
+		}
+	}
+
 	function securityAnsCheck(SecurityAns){
 		var choice = document.getElementById(SecurityAns).value;
 		if(choice == ''){
@@ -141,7 +181,7 @@
 		if(name_string==''){
 			document.getElementById('fname_valid').style.display = 'none';
 			document.getElementById('fname_invalid').style.display = 'block';
-			document.getElementById('fname_invalid').innerHTML="Name can't be blank";
+			document.getElementById('fname_invalid').innerHTML="First name can't be blank";
 		}
 		else{
 			document.getElementById('fname_invalid').style.display = 'none';
@@ -154,7 +194,7 @@
 		if(name_string==''){
 			document.getElementById('Lname_valid').style.display = 'none';
 			document.getElementById('Lname_invalid').style.display = 'block';
-			document.getElementById('Lname_invalid').innerHTML=" Last Name can't be blank";
+			document.getElementById('Lname_invalid').innerHTML=" Last name can't be blank";
 		}
 		else{
 			document.getElementById('Lname_invalid').style.display = 'none';
@@ -411,16 +451,16 @@
 										</p>
 										<p>
 											<label for="Password">Password:<span class="ibm-required">*</span><br> <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
-											<span><input name="Password" id="Password" size="42" type="password" value="" onkeyup="validatePassword();"> </span>
-											<span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span>
-											<span class="dw-lc-formconfirm" id="password_valid" style="display:none;"> </span>
+											<span><input name="Password" id="Password" size="42" type="password" value="" onblur="checkPassword();"> </span>
+											<span class="email_error" id="password_invalid" style="display:none;"></span>
+											<span class="email_correct" id="password_valid" style="display:none;"> </span>
 										</p>
 										<p>
 											<label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
-											<span><input name="RePassword" id="RePassword" size="42" type="password" value="" onkeyup="validateRePassword();"></span>
-											<span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span>
-											<span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span>
-											<span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;"> </span>
+											<span><input name="RePassword" id="RePassword" size="42" type="password" value="" onblur="checkRePassword()"></span>
+											<span class="email_error" id="repassword_mismatch" style="display:none;">The passwords did not match.</span>
+											<span class="email_error" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span>
+											<span class="email_correct" id="repassword_valid" style="display:none;"></span>
 										</p>
 										<p>
 											<label for="alias">Display name:<span class="ibm-required">*</span><br>
