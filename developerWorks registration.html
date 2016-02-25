@@ -1,38 +1,14 @@
 <!DOCTYPE html>
-<!-- saved from url=(0146)https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&appname=developerworks&d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="dj_webkit dj_chrome dj_contentbox dj_webkit dj_chrome dj_contentbox dj_webkit dj_chrome dj_contentbox dj_webkit dj_chrome dj_contentbox"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- SITE MON : START (DO NOT DELETE) -->
-	<!-- developerWorks monitoring token -->
-	<!-- SITE MON : END (DO NOT DELETE) -->
 	<meta name="title" content="IBM developerworks: Sign in">
 	<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico">
-	<!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
 	<link href="./developerWorks%20registration_files/www.css" rel="stylesheet" type="text/css">
-	<!-- Masthead/footer -->
 	<link href="./developerWorks%20registration_files/dw-mf.css" rel="stylesheet"  type="text/css">
 	<link href="./developerWorks%20registration_files/dw-mf-minimal-N.css" media="screen" rel="stylesheet"  type="text/css">
 	<!-- Home CSS -->
 	<link href="./developerWorks%20registration_files/dwwi-v17.css" media="screen" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="./developerWorks%20registration_files/dw-www.js"> </script>
-	<script type="text/javascript"> ibmweb.config.sbs = false; </script>
-	<!-- <SCRIPT src="//www.ibm.com/common/js/notice_choice_functions.js" type="text/javascript" charset="UTF-8"></SCRIPT> -->
-	<!-- <SCRIPT src="//www.ibm.com/common/js/notice_choice.js" type="text/javascript" charset="UTF-8"></SCRIPT> -->
-	<script type="text/javascript">
-	function removetempfunction () {
-		var whichindex = document.getElementById('SecurityQues').selectedIndex;
-		console.log(whichindex);
-		if (whichindex == 6) {
-			document.getElementById('customquestioncontainer').style.display = 'block';
-			document.getElementById('custom_question').value='';
-		}
-		else {
-			document.getElementById('customquestioncontainer').style.display = 'none';
-		}
-	}
-	</script>
 	<title>developerWorks registration</title>
 	<script type="text/javascript">
-
 	function checkPassword(){
 		var pass = document.getElementById('Password').value;
 		if (pass == ''){
@@ -130,7 +106,6 @@
 			document.getElementById('country_valid').style.display = 'inline';
 			document.getElementById('country_valid').innerHTML= 'Validated Input';
 		}
-
 	}
 
 	function checkEmail(emailAddress){
@@ -148,33 +123,6 @@
 			document.getElementById('email_valid').innerHTML="Correct Email Address Format";
 
 		}
-		// var Teamvalue = document.getElementById(emailAddress).value;
-		// var vpreLang = 'en_US';
-		// var vlang= "&lang=" + vpreLang;
-		// var sb = "email="+ Teamvalue + vlang;
-		// //sb = sb + "teamname=" + encodeURIComponent(Teamvalue.replace(/^\s+/g, '').replace(/\s+$/g, ''))+"&";
-		// var result=false;
-		// if(Teamvalue != null && Teamvalue != ''){
-		// 	new Ajax.Request('/developerworks/dwwi/jsp/emailExists.jsp?',
-		// 	{parameters:sb,
-		// 		evalScripts:false,
-		// 		asynchronous:false,
-		// 		encoding:'UTF-8',
-		// 		onSuccess: function(t) {
-		// 			var json = eval( "(" + t.responseText + ")" );
-		// 			result = true;
-		// 			if(json.result=='true') {
-		// 				document.getElementById('userid_valid').style.display = 'none';
-		// 				document.getElementById('userid_invalid').style.display = 'inline';
-		// 				document.getElementById('userid_invalid').innerHTML=json.message;
-		// 				result = true;
-		// 			}
-		// 		}, onFailure:function(t) {
-		// 			alert('onFail: ' + t.statusText);
-		// 		}
-		// 	});
-		// }
-		// return result;
 	}
 	function FnameCheck(Fname){
 		var name_string = document.getElementById(Fname).value;
@@ -214,146 +162,6 @@
 			document.getElementById('alias_valid').innerHTML='Correct.';
 		}
 
-	}
-	function validatePassword() {
-		var passwd = document.forms['register'].Password.value;
-		var min_passwd_len = 8;
-		var max_passwd_len = 31;
-		if((passwd != null) && (passwd.length < min_passwd_len)){
-			document.getElementById('password_valid').style.display = 'none';
-			document.getElementById('password_invalid').style.display = 'inline';
-			return "";
-		}else if(passwd.length > max_passwd_len){
-			document.getElementById('password_valid').style.display = 'none';
-			document.getElementById('password_invalid').style.display = 'inline';
-			return "";
-		}
-		var passwdPat= "^([A-Za-z0-9@._-]+)$";
-		var matchArray=passwd.match(passwdPat);
-		if (matchArray == null) {
-			document.getElementById('password_valid').style.display = 'none';
-			document.getElementById('password_invalid').style.display = 'inline';
-		}else{
-			document.getElementById('password_invalid').style.display = 'none';
-			document.getElementById('password_valid').style.display = 'inline';
-		}
-	}
-	function validateRePassword() {
-		var passwd = document.forms['register'].Password.value;
-		var re_passwd = document.forms['register'].RePassword.value;
-		var min_passwd_len = 8;
-		var max_passwd_len = 31;
-		if((re_passwd != null) && (re_passwd.length < min_passwd_len)){
-			document.getElementById('repassword_valid').style.display = 'none';
-			document.getElementById('repassword_invalid').style.display = 'inline';
-			document.getElementById('repassword_mismatch').style.display = 'none';
-			return "";
-		}else if(re_passwd.length > max_passwd_len){
-			document.getElementById('repassword_valid').style.display = 'none';
-			document.getElementById('repassword_invalid').style.display = 'inline';
-			document.getElementById('repassword_mismatch').style.display = 'none';
-			return "";
-		}
-		var passwdPat= "^([A-Za-z0-9@._-]+)$";
-		var matchArray=re_passwd.match(passwdPat);
-		if (matchArray == null) {
-			document.getElementById('repassword_valid').style.display = 'none';
-			document.getElementById('repassword_invalid').style.display = 'inline';
-			document.getElementById('repassword_mismatch').style.display = 'none';
-			return "";
-		}else if(re_passwd != passwd){
-			document.getElementById('repassword_invalid').style.display = 'none';
-			document.getElementById('repassword_valid').style.display = 'none';
-			document.getElementById('repassword_mismatch').style.display = 'inline';
-		}else{
-			document.getElementById('repassword_invalid').style.display = 'none';
-			document.getElementById('repassword_mismatch').style.display = 'none';
-			document.getElementById('repassword_valid').style.display = 'inline';
-		}
-	}
-	function assignSubmit(){
-		document.getElementById('action').value = 'registerandtake';
-		var isValid = "true";
-		return isValid;
-	}
-	function isValidDisplay(){
-		var alias = document.forms['register'].alias.value;
-		var isValid = "true";
-		if( (alias.indexOf("<") != -1) || (alias.indexOf(">") != -1) || (alias.indexOf(";") != -1) ||
-		(alias.indexOf(",") != -1) || (alias.indexOf("\"") != -1) || (alias.indexOf("'") != -1)){
-			isValid = "false";
-		}
-		return isValid;
-	}
-	function validateDisplayName() {
-		var alias = document.forms['register'].alias.value;
-		var min_passwd_len = 3;
-		var max_passwd_len = 31;
-		var isValid = isValidDisplay();
-		if((alias != null) && (alias.length < min_passwd_len)){
-			document.getElementById('alias_valid').style.display = 'none';
-			document.getElementById('alias_invalid').style.display = 'inline';
-		}else if(alias.length > max_passwd_len){
-			document.getElementById('alias_valid').style.display = 'none';
-			document.getElementById('alias_invalid').style.display = 'inline';
-		}else if(isValid == "false"){
-			document.getElementById('alias_valid').style.display = 'none';
-			document.getElementById('alias_invalid').style.display = 'inline';
-		}else{
-			document.getElementById('alias_invalid').style.display = 'none';
-			document.getElementById('alias_valid').style.display = 'inline';
-		}
-	}
-	function validateUserID() {
-		var emailStr = document.forms['register'].emailAddress.value;
-		document.getElementById('userid_invalid').innerHTML='This is not a valid email address.';
-		var min_passwd_len = 3;
-		var max_passwd_len = 80;
-		if((emailStr != null) && (emailStr.length < min_passwd_len)){
-			document.getElementById('userid_valid').style.display = 'none';
-			document.getElementById('userid_invalid').style.display = 'inline';
-			return "";
-		}else if(emailStr.length > max_passwd_len){
-			document.getElementById('userid_valid').style.display = 'none';
-			document.getElementById('userid_invalid').style.display = 'inline';
-			return "";
-		}
-		emailStr = emailStr.replace("[" , "");
-		emailStr = emailStr.replace("]" , "");
-		//var emailPat=/^(.+)@(.+)$/;
-		var emailPat="^([A-Za-z0-9!#$%&'+-./=?^_`{|}~]+)@([A-Za-z0-9!#$%&'+-./=?^_`{|}~]+)[.]([A-Za-z0-9!#$%&'+-/=?^_`{|}~]{2,4})$";
-		var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";
-		var validChars="\[^\\s" + specialChars + "\]";
-		var quotedUser="(\"[^\"]*\")";
-		var atom=validChars + '+';
-		var word="(" + atom + "|" + quotedUser + ")";
-		var userPat=new RegExp("^" + word + "(\\." + word + ")*$");
-		var domainPat=new RegExp("^" + atom + "(\\." + atom + ")*$");
-		var matchArray=emailStr.match(emailPat);
-		if (matchArray == null) {
-			document.getElementById('userid_valid').style.display = 'none';
-			document.getElementById('userid_invalid').style.display = 'inline';
-			return "";
-		}else{
-			var user=matchArray[1];
-			var domain=matchArray[2];
-			if (user.match(userPat) == null) {
-				document.getElementById('userid_valid').style.display = 'none';
-				document.getElementById('userid_invalid').style.display = 'inline';
-				return "";
-			}else{
-				var domainArray=domain.match(domainPat);
-				if (domainArray == null) {
-					document.getElementById('userid_valid').style.display = 'none';
-					document.getElementById('userid_invalid').style.display = 'inline';
-					return "";
-				}else{
-					document.getElementById('userid_valid').style.display = 'inline';
-					document.getElementById('userid_invalid').style.display = 'none';
-					return "";
-				}
-			}
-		}
 	}
 	</script>
 	<body id="ibm-com" class="v17" aria-busy="false">
@@ -453,7 +261,7 @@
 											<label for="countryResidence">Country/region of residence:<span class="ibm-required">*</span><br>
 												<span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span></label>
 												<span>
-													<select name="CountryOfRes" id="countryResidence" onchange = "countrycheck('countryResidence')">
+													<select name="CountryOfRes" id="countryResidence" onchange = "countrycheck('countryResidence');">
 														<option selected="selected" value="">Select one</option>
 														<option value="FR">France</option>
 														<option value="DE">Germany</option>
