@@ -43,7 +43,7 @@
 		else{
 			document.getElementById('password_invalid').style.display = 'none';
 			document.getElementById('password_valid').style.display = 'inline';
-			document.getElementById('password_valid').innerHTML="Correct";
+			document.getElementById('password_valid').innerHTML="Correct input, please verify  the password";
 		}
 	}
 	function checkRePassword(){
@@ -203,42 +203,17 @@
 		}
 	}
 	function checkDisplayname(displayName){
-		var Teamvalue = document.getElementById(displayName).value;
-		var vpreLang = 'en_US';
-		var vlang= "&lang=" + vpreLang;
-		var sb = "displayname="+ Teamvalue + vlang;
-		//sb = sb + "teamname=" + encodeURIComponent(Teamvalue.replace(/^\s+/g, '').replace(/\s+$/g, ''))+"&";
-		var displayNamePat = "^([A-Za-z0-9@._-]+)$";
-		var matchArray = Teamvalue.match(displayNamePat);
-		var result=false;
-		if( (Teamvalue == null) || (Teamvalue != null && Teamvalue.length < 3) || (matchArray == null)){
+		var name = document.getElementById(displayName).value;
+		if(name == ''){
 			document.getElementById('alias_valid').style.display = 'none';
 			document.getElementById('alias_invalid').style.display = 'inline';
 			document.getElementById('alias_invalid').innerHTML='This display name is not valid. Please choose another.';
-			result = true;
-			return result;
+		}else{
+			document.getElementById('alias_invalid').style.display = 'none';
+			document.getElementById('alias_valid').style.display = 'inline';
+			document.getElementById('alias_valid').innerHTML='Correct.';
 		}
-		if(Teamvalue != null && Teamvalue != ''){
-			new Ajax.Request('/developerworks/dwwi/jsp/displaynameExists.jsp?',
-			{parameters:sb,
-				evalScripts:false,
-				asynchronous:false,
-				encoding:'UTF-8',
-				onSuccess: function(t) {
-					var json = eval( "(" + t.responseText + ")" );
-					result = true;
-					if(json.result=='true') {
-						document.getElementById('alias_valid').style.display = 'none';
-						document.getElementById('alias_invalid').style.display = 'inline';
-						document.getElementById('alias_invalid').innerHTML='This display name is taken. Please choose another.';
-						result = true;
-					}
-				}, onFailure:function(t) {
-					alert('onFail: ' + t.statusText);
-				}
-			});
-		}
-		return result;
+
 	}
 	function validatePassword() {
 		var passwd = document.forms['register'].Password.value;
@@ -468,9 +443,9 @@
 													<a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&appname=developerworks&d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show('overlay2', this);return false;" role="button">Tips for choosing display name.</a>)
 												</span>
 											</label>
-											<span><input name="alias" id="alias" size="42" type="text" value="" onkeyup="validateDisplayName();" onblur="checkDisplayname('alias');" aria-required="true"></span>
-											<span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span>
-											<span class="dw-lc-formconfirm" id="alias_valid" style="display:none;"> </span>
+											<span><input name="alias" id="alias" size="42" type="text" value="" onblur="checkDisplayname('alias');" aria-required="true"></span>
+											<span class="email_error" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span>
+											<span class="email_correct" id="alias_valid" style="display:none;"> </span>
 										</p>
 										<!-- SUPPLEMENTAL OVERLAYS START HERE -->
 										<!-- SUPPLEMENTAL OVERLAYS END HERE -->
